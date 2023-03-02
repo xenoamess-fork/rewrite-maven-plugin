@@ -1,0 +1,43 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.openrewrite.maven</groupId>
+    <artifactId>error_project</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <name>RewriteRunIT#error_project</name>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <annotations.version>23.0.0</annotations.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>@project.groupId@</groupId>
+                <artifactId>@project.artifactId@</artifactId>
+                <version>@project.version@</version>
+                <configuration>
+                    <skipMavenParsing>true</skipMavenParsing>
+                    <activeRecipes>
+                        <recipe>org.openrewrite.java.cleanup.NoWhitespaceAfter</recipe>
+                    </activeRecipes>
+                    <checkstyleConfigFile>checkstyle/checkstyle.xml</checkstyleConfigFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${annotations.version}</version>
+        </dependency>
+    </dependencies>
+</project>
